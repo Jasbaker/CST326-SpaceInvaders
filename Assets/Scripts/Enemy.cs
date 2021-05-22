@@ -2,31 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
     private int scoreN;
-    public GameController gamec;
+    public GameController gameC;
+    public EnemyMover enemyM;
+    public Player player;
     public Text score;
     public Text hiscore;
     public GameObject ExplosionParitcles;
 
-    public Transform enemyMover;
-    public float speed;
+    private Animator enemyAnimator;
 
     void Start()
     {
-        enemyMover = GetComponent<Transform>();
+        enemyAnimator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        enemyMover.position += Vector3.right * speed * Time.deltaTime;
-        if (transform.position.x < -8.0f || transform.position.x > 8.0f)
-        {
-            speed = -speed;
-            enemyMover.position += Vector3.down * 0.5f;
-        }
 
 
     }
@@ -40,21 +36,18 @@ public class Enemy : MonoBehaviour
             GameObject blast = Instantiate(ExplosionParitcles, gameObject.transform.position, Quaternion.identity);
             blast.GetComponent<ParticleSystem>().Play();
 
-            if (this.name == "Enemy 10")
+
+            if (this.tag == "enemy 10")
             {
                 scoreN += 10;
             }
-            if (this.name == "Enemy 20")
+            if (this.tag == "enemy 20")
             {
                 scoreN += 20;
             }
-            if (this.name == "Enemy 30")
+            if (this.tag == "enemy 30")
             {
                 scoreN += 30;
-            }
-            if (this.name == "Enemy ?")
-            {
-                scoreN += 50;
             }
             if (scoreN >= 100 || scoreN < 1000)
             {
@@ -73,10 +66,33 @@ public class Enemy : MonoBehaviour
     
     private void EnemyCount()
     {
-        gamec.enemyNum--;
-        if (gamec.enemyNum == 0)
+        gameC.enemyNum--;
+        Debug.Log(gameC.enemyNum);
+
+        if (gameC.enemyNum == 14)
+        {
+            enemyM.speed = enemyM.speed * 2;
+        }
+        if (gameC.enemyNum == 7)
+        {
+            enemyM.speed = enemyM.speed * 2;
+        }
+        if (gameC.enemyNum == 3)
+        {
+            enemyM.speed = enemyM.speed * 2;
+        }
+        if (gameC.enemyNum == 2)
+        {
+            enemyM.speed = enemyM.speed * 2;
+        }
+        if (gameC.enemyNum == 1)
+        {
+            enemyM.speed = enemyM.speed * 2;
+        }
+        if (gameC.enemyNum == 0 )
         {
             hiscore.text = score.text;
+            SceneManager.LoadScene(sceneName: "GameOver");
         }
 
 

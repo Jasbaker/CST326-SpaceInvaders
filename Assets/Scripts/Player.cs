@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -8,12 +9,17 @@ public class Player : MonoBehaviour
     public float speed;
     public float maxBound, minBound;
     public GameObject bullet;
+    public bool gameOver;
 
   public Transform shootingOffset;
+
+    private Animator playerAnimator;
 
     void Start()
     {
         player = GetComponent<Transform>();
+        playerAnimator = GetComponent<Animator>();
+        gameOver = false;
     }
     // Update is called once per frame
     void Update()
@@ -28,16 +34,19 @@ public class Player : MonoBehaviour
         player.position += Vector3.right * h * speed;
 
         if (Input.GetKeyDown(KeyCode.Space))
-      {
-        GameObject shot = Instantiate(bullet, shootingOffset.position, Quaternion.identity);
+        {
+            GameObject shot = Instantiate(bullet, shootingOffset.position, Quaternion.identity);
+            playerAnimator.SetTrigger("shoot");
 
-        Destroy(shot, 3f);
+            Destroy(shot, 3f);
 
-      }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
+        gameOver = true;
+        SceneManager.LoadScene(sceneName: "GameOver");
     }
 }

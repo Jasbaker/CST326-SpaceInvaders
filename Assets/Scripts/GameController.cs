@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public int enemyNum = 4;
+    public int enemyNum = 27;
 }

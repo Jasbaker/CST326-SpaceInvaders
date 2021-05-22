@@ -8,6 +8,9 @@ TagManager:
   - bullet
   - enemy bullet
   - wall
+  - enemy 10
+  - enemy 20
+  - enemy 30
   layers:
   - Default
   - TransparentFX

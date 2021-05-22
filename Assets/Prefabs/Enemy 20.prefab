@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8381401497030062642}
   - component: {fileID: 8275435378880603652}
   - component: {fileID: 7308012184249806278}
+  - component: {fileID: 6348843428411633882}
   m_Layer: 0
   m_Name: Enemy 20
   m_TagString: Enemy
@@ -108,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.9567668}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &7308012184249806278
 MonoBehaviour:
@@ -122,10 +123,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796aad014e2107342a60ed88af81c745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamec: {fileID: 0}
+  gameC: {fileID: 0}
+  enemyM: {fileID: 0}
+  player: {fileID: 0}
   score: {fileID: 0}
   hiscore: {fileID: 0}
   ExplosionParitcles: {fileID: 0}
+--- !u!95 &6348843428411633882
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155951041378845505}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 498d2efbdd016874b936bc957a9d75eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8773333493002400215
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,4 +220,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2457785739244962049, guid: d4511b14daaa37c468a74ed386b2583f, type: 3}
   shootingOffset: {fileID: 0}
-  fireRate: 0.999
+  enemy: {fileID: 7308012184249806278}
+  fireRate: 0.9999

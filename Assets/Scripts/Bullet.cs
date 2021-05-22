@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "enemy 10" || collision.gameObject.tag == "enemy 20" || collision.gameObject.tag == "enemy 30")
         {
             Destroy(gameObject);
         } 
